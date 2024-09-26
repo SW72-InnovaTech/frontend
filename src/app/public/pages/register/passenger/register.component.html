@@ -1,0 +1,39 @@
+<div class="register-container">
+    <mat-card class="register-card">
+        <div class="header">
+            <mat-icon class="register-icon" aria-hidden="false" aria-label="register-icon" fontIcon="person_add"></mat-icon>
+            <mat-card-header>
+                <mat-card-title class="title">Regístrate</mat-card-title>
+                <mat-card-subtitle class="subtitle">Ingresa tus datos para acceder</mat-card-subtitle>
+            </mat-card-header>
+        </div>
+
+        <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="form-input-single" appearance="outline">
+                <mat-label>Nombre de Usuario</mat-label>
+                <input matInput formControlName="username">
+                <mat-error *ngIf="isInvalidControl(RegisterForm, 'username')">{{ errorMessagesForControl(RegisterForm, 'username') }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-input-single" appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="password" type="password">
+                <mat-error *ngIf="isInvalidControl(RegisterForm, 'password')">{{ errorMessagesForControl(RegisterForm, 'password') }}
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="register">Registrarme</button>
+        </form>
+
+        <div class="login-redirect-container">
+            <span>¿Ya tienes una cuenta?</span>
+            <a class="login-link" (click)="redirectToLogin()">Inicia Sesión</a>
+        </div>
+
+        <button mat-button color="primary" type="submit" class="back-button" (click)="redirectToLogin()">
+            <mat-icon aria-hidden="false" aria-label="back-icon" fontIcon="arrow_back"></mat-icon>
+            Regresar
+        </button>
+    </mat-card>
+</div>
+
+
